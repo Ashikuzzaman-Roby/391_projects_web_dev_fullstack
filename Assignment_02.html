@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSE 391 Assignment 2 : Single File Solution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        /* --- Global Styles --- */
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* --- Question 1: Fortune Generator Styles --- */
+        #fortune-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #fortune-box {
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 4px solid #3498db;
+            border-radius: 10px;
+            background-color: #ecf0f1;
+            transition: all 0.5s ease;
+        }
+        #fortune-text {
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+        #fortune-controls button {
+            background-color: #3498db;
+            color: white;
+        }
+
+    
+        #stopwatch-display {
+            font-size: 3em;
+            font-family: monospace;
+            padding: 10px 20px;
+            border: 2px solid #e74c3c;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #fceae9;
+        }
+        #stopwatch-controls button:nth-child(1) { background-color: #2ecc71; color: white; } /* Start */
+        #stopwatch-controls button:nth-child(2) { background-color: #e74c3c; color: white; } /* Stop */
+        #stopwatch-controls button:nth-child(3) { background-color: #f39c12; color: white; } /* Reset */
+
+        /* --- Question 3: To-Do List Styles --- */
+        #task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #task-list li {
+            background-color: #ecf0f1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #task-list li.completed span {
+            text-decoration: line-through;
+            color: #888;
+        }
+        #task-list button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8em;
+        }
+        #task-list input[type="checkbox"] {
+            margin-right: 10px;
+            min-width: 20px; 
+            min-height: 20px;
+        }
+        #todo-input-section input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="q1-section">
+        <h2>Question 1: Fortune Generator</h2>
+        <div id="fortune-container">
+            <div id="fortune-box">
+                <p id="fortune-text">Loading fortune...</p>
+            </div>
+            <div id="fortune-controls">
+                <button data-style="style1">Style 1</button>
+                <button data-style="style2">Style 2</button>
+                <button data-style="style3">Style 3</button>
+                <button data-style="style4">Style 4</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="q2-section">
+        <h2>Question 2: 3-Second Stopwatch</h2>
+        <div id="stopwatch-display">00</div>
+        <div id="stopwatch-controls">
+            <button id="start-btn">Start</button>
+            <button id="stop-btn">Stop</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+    </section>
+
+    <section id="q3-section">
+        <h2>Question 3: Persistent To-Do List</h2>
+        <div id="todo-input-section">
+            <input type="text" id="task-input" placeholder="Add a new task...">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+        <ul id="task-list">
+            </ul>
+    </section>
+
+    <footer>
+        <p>Assignment Footer</p>
+    </footer>
+
+    <script>
+        // QUESTION 1: FORTUNE GENERATOR
+        
+
+        const fortuneMessages = [
+            "True wisdom comes not from knowledge, but from understanding.",
+            "A journey of a thousand miles begins with a single step.",
+            "The early bird gets the worm, but the second mouse gets the cheese.",
+            "You will receive a pleasant surprise soon.",
+            "Be careful of what you wish for.",
+            "Your hard work will pay off handsomely.",
+            "A new opportunity awaits you around the corner.",
+            "Patience is a key to success.",
+            "Don't worry about failures, worry about the chances you miss.",
+            "Happiness is not a destination, it is a journey.",
+        ];
+
+        const q1FortuneText = document.getElementById('fortune-text');
+        const q1FortuneBox = document.getElementById('fortune-box');
+        const q1Controls = document.getElementById('fortune-controls');
+
+        // Random Selection on page load
+        function displayRandomFortune() {
+            const randomIndex = Math.floor(Math.random() * fortuneMessages.length);
+            q1FortuneText.textContent = fortuneMessages[randomIndex];
+        }
+
+        // Styling & Interactivity (Change appearance dynamically)
+        q1Controls.addEventListener('click', (event) => {
+            const style = event.target.dataset.style;
+            if (!style) return;
+
+            // Resetting styles to ensure proper state transition
+            q1FortuneBox.style = ''; 
+            q1FortuneText.style = '';
+
+            switch(style) {
+                case 'style1':
+                    
+                    q1FortuneText.style.color = '#1E90FF'; // Blue
+                    q1FortuneBox.style.backgroundColor = '#F0F8FF';
+                    q1FortuneBox.style.borderColor = '#FF6347'; 
+                    q1FortuneText.style.fontFamily = 'Georgia, serif'; 
+                    q1FortuneText.style.fontSize = '1.3em';
+                    break;
+                case 'style2':
+                    
+                    q1FortuneText.style.color = '#FFFFFF'; 
+                    q1FortuneBox.style.backgroundColor = '#4B0082'; 
+                    q1FortuneBox.style.borderColor = '#FFD700';
+                    q1FortuneText.style.fontFamily = 'Verdana, sans-serif'; 
+                    q1FortuneText.style.fontSize = '1.1em';
+                    break;
+                case 'style3':
+                   
+                    q1FortuneText.style.color = '#808000';
+                    q1FortuneBox.style.backgroundColor = '#FFFFE0';
+                    q1FortuneBox.style.borderColor = '#20B2AA';
+                    q1FortuneText.style.fontFamily = 'Times New Roman, serif'; 
+                    q1FortuneText.style.fontSize = '1.2em';
+                    break;
+                case 'style4':
+                   
+                    q1FortuneText.style.color = '#000000'; 
+                    q1FortuneBox.style.backgroundColor = '#E6E6FA'; 
+                    q1FortuneBox.style.borderColor = '#008080';
+                    q1FortuneText.style.fontFamily = 'Courier New, monospace'; 
+                    q1FortuneText.style.fontSize = '1.5em';
+                    break;
+            }
+        });
+
+
+      
+        //           QUESTION 2: STOPWATCH
+        
+
+        const q2Display = document.getElementById('stopwatch-display');
+        const q2StartBtn = document.getElementById('start-btn');
+        const q2StopBtn = document.getElementById('stop-btn');
+        const q2ResetBtn = document.getElementById('reset-btn');
+
+        let q2TimerInterval;
+        let q2CurrentTime = 0; 
+        const q2Step = 3;       
+        const q2MaxTime = 30;   
+
+        function q2UpdateDisplay() {
+            q2Display.textContent = q2CurrentTime.toString().padStart(2, '0'); 
+        }
+
+        // Start Button
+        q2StartBtn.addEventListener('click', () => {
+            if (q2TimerInterval) return; 
+
+            q2TimerInterval = setInterval(() => {
+                q2CurrentTime += q2Step;
+
+                if (q2CurrentTime > q2MaxTime) {
+                    q2CurrentTime = q2MaxTime; 
+                }
+                
+                q2UpdateDisplay();
+                
+                // Timer automatically stops at 30 seconds
+                if (q2CurrentTime >= q2MaxTime) {
+                    clearInterval(q2TimerInterval);
+                    q2TimerInterval = null;
+                }
+            }, q2Step * 1000); // Interval duration is 3000ms (3 seconds)
+        });
+
+        // Stop Button
+        q2StopBtn.addEventListener('click', () => {
+            clearInterval(q2TimerInterval);
+            q2TimerInterval = null;
+        });
+
+        // Reset Button
+        q2ResetBtn.addEventListener('click', () => {
+            clearInterval(q2TimerInterval);
+            q2TimerInterval = null;
+            q2CurrentTime = 0;
+            q2UpdateDisplay();
+        });
+        
+        // Initial setup for Q2
+        q2UpdateDisplay(); 
+
+
+        
+        //QUESTION 3: TO-DO LIST
+        
+
+        const q3TaskInput = document.getElementById('task-input');
+        const q3AddTaskBtn = document.getElementById('add-task-btn');
+        const q3TaskList = document.getElementById('task-list');
+
+        let q3Tasks = [];
+       
+        function q3SaveTasks() {
+            localStorage.setItem('todoTasks', JSON.stringify(q3Tasks));
+        }
+
+        
+        function q3RenderTasks() {
+            q3TaskList.innerHTML = '';
+            
+            q3Tasks.forEach((task, index) => {
+                const listItem = document.createElement('li');
+                listItem.className = task.completed ? 'completed' : ''; 
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.completed;
+                checkbox.addEventListener('change', () => q3ToggleComplete(index));
+                
+                const taskText = document.createElement('span');
+                taskText.textContent = task.text;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.addEventListener('click', () => q3DeleteTask(index));
+
+                listItem.appendChild(checkbox);
+                listItem.appendChild(taskText);
+                listItem.appendChild(deleteBtn);
+                q3TaskList.appendChild(listItem);
+            });
+        }
+
+        
+        q3AddTaskBtn.addEventListener('click', () => {
+            const taskText = q3TaskInput.value.trim();
+            if (taskText !== '') {
+                q3Tasks.push({ text: taskText, completed: false });
+                q3TaskInput.value = ''; 
+                q3RenderTasks();
+                q3SaveTasks(); 
+            }
+        });
+
+       
+        function q3DeleteTask(index) {
+            q3Tasks.splice(index, 1);
+            q3RenderTasks();
+            q3SaveTasks(); 
+        }
+
+
+        function q3ToggleComplete(index) {
+            q3Tasks[index].completed = !q3Tasks[index].completed;
+            q3RenderTasks(); 
+            q3SaveTasks(); 
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+        
+            displayRandomFortune(); 
+            
+           
+            const storedTasks = localStorage.getItem('todoTasks');
+            if (storedTasks) {
+                q3Tasks = JSON.parse(storedTasks);
+                q3RenderTasks();
+            }
+        });
+    </script>
+</body>
+</html>
