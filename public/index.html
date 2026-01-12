@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Workshop Appointment System</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-car-mechanic"></i>
+                <span>Car Workshop System</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showSection('user')">
+                    <i class="fas fa-user"></i> User Panel
+                    <span class="bangla-text">(ইউজার প্যানেল)</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('admin')">
+                    <i class="fas fa-tools"></i> Admin Panel
+                    <span class="bangla-text">(অ্যাডমিন প্যানেল)</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Mechanics Section -->
+        <section id="mechanics-section" class="section mechanics-section">
+            <div class="mechanics-title">
+                <i class="fas fa-users-cog"></i>
+                <h2 class="section-title">Our Expert Mechanics</h2>
+            </div>
+            <h3 class="section-title bangla">আমাদের মেকানিক বিশেষজ্ঞগণ</h3>
+            
+            <div class="mechanics-grid">
+                <div class="mechanic-card">
+                    <div class="mechanic-icon">
+                        <i class="fas fa-user-hard-hat"></i>
+                    </div>
+                    <h3 class="mechanic-name">John Smith</h3>
+                    <p class="mechanic-specialty">Engine Specialist</p>
+                    <div class="mechanic-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="mechanic-experience">15+ years experience</p>
+                    <p class="bangla-text">১৫+ বছরের অভিজ্ঞতা</p>
+                </div>
+                
+                <div class="mechanic-card">
+                    <div class="mechanic-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3 class="mechanic-name">Bob Jones</h3>
+                    <p class="mechanic-specialty">Transmission Expert</p>
+                    <div class="mechanic-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="mechanic-experience">12 years experience</p>
+                    <p class="bangla-text">১২ বছরের অভিজ্ঞতা</p>
+                </div>
+                
+                <div class="mechanic-card">
+                    <div class="mechanic-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="mechanic-name">Alex Rodriguez</h3>
+                    <p class="mechanic-specialty">Electrical Systems</p>
+                    <div class="mechanic-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="mechanic-experience">10 years experience</p>
+                    <p class="bangla-text">১০ বছরের অভিজ্ঞতা</p>
+                </div>
+                
+                <div class="mechanic-card">
+                    <div class="mechanic-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="mechanic-name">Hopper Wilson</h3>
+                    <p class="mechanic-specialty">Brake & Suspension</p>
+                    <div class="mechanic-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="mechanic-experience">8 years experience</p>
+                    <p class="bangla-text">৮ বছরের অভিজ্ঞতা</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Panel (Booking Form) -->
+        <section id="user-section" class="section">
+            <h2 class="section-title">Appointment Booking Form</h2>
+            <h3 class="section-title bangla mb-20">অ্যাপয়েন্টমেন্ট বুকিং ফর্ম</h3>
+            
+            <form id="appointmentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <label class="form-label bangla">আপনার নাম</label>
+                        <input type="text" name="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <label class="form-label bangla">ফোন নম্বর</label>
+                        <input type="tel" name="phone" class="form-input" placeholder="01XXXXXXXXX" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <label class="form-label bangla">ঠিকানা</label>
+                    <textarea name="address" class="form-textarea" placeholder="Enter your complete address" required></textarea>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Car License Number</label>
+                        <label class="form-label bangla">গাড়ির লাইসেন্স নং</label>
+                        <input type="text" name="license_no" class="form-input" placeholder="e.g. DHA-XX-XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Car Engine Number</label>
+                        <label class="form-label bangla">গাড়ির ইঞ্জিন নং</label>
+                        <input type="text" name="engine_no" class="form-input" placeholder="Engine number" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Appointment Date</label>
+                        <label class="form-label bangla">অ্যাপয়েন্টমেন্ট তারিখ</label>
+                        <input type="date" id="dateInput" name="date" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Select Mechanic</label>
+                        <label class="form-label bangla">মেকানিক নির্বাচন</label>
+                        <select id="mechanicSelect" name="mechanic_id" class="form-select" required>
+                            <option value="">Select one / একজন নির্বাচন করুন</option>
+                            <option value="1">John Smith (Engine Specialist)</option>
+                            <option value="2">Bob Jones (Transmission Expert)</option>
+                            <option value="3">Alex Rodriguez (Electrical Systems)</option>
+                            <option value="4">Hopper Wilson (Brake & Suspension)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-calendar-check"></i> Confirm Appointment / অ্যাপয়েন্টমেন্ট কনফার্ম করুন
+                </button>
+            </form>
+            
+            <div id="message" class="message"></div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin-section" class="section admin-panel hidden">
+            <div class="admin-header">
+                <h2 class="section-title">Admin Dashboard</h2>
+                <h3 class="section-title bangla">অ্যাডমিন ড্যাশবোর্ড</h3>
+                <button class="refresh-btn" onclick="fetchAppointments()">
+                    <i class="fas fa-sync-alt"></i> Refresh List / রিফ্রেশ লিস্ট
+                </button>
+            </div>
+            
+            <table class="appointment-table">
+                <thead>
+                    <tr>
+                        <th>Name / নাম</th>
+                        <th>Phone / ফোন</th>
+                        <th>Car No. / গাড়ি নং</th>
+                        <th>Date / তারিখ</th>
+                        <th>Mechanic / মেকানিক</th>
+                        <th>Action / অ্যাকশন</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center">Loading data... / ডাটা লোড হচ্ছে...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2023 CarCare Workshop System. All rights reserved.</p>
+        <p>Contact: +880 1XXX-XXXXXX | Email: info@carcare.com</p>
+        <p class="bangla-text">যোগাযোগ: +৮৮০ ১XXX-XXXXXX | ইমেইল: info@carcare.com</p>
+    </footer>
+
+    <script src="./index.js">
+        // Set minimum date to today
+        
+    </script>
+</body>
+</html>

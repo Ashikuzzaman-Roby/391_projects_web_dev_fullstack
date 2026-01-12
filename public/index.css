@@ -1,0 +1,403 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-blue: #2563eb;
+	--dark-blue: #1e40af;
+	--light-blue: #dbeafe;
+	--accent-red: #dc2626;
+	--text-dark: #1f2937;
+	--text-light: #6b7280;
+	--bg-white: #ffffff;
+	--bg-gray: #f9fafb;
+	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	--border-radius: 12px;
+}
+
+body {
+	font-family: 'Poppins', 'Noto Sans Bengali', sans-serif;
+	background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+	color: var(--text-dark);
+	min-height: 100vh;
+	line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+	background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+	color: white;
+	padding: 18px 5%;
+	box-shadow: var(--shadow);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-size: 28px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.logo i {
+	font-size: 32px;
+}
+
+.nav-buttons {
+	display: flex;
+	gap: 25px;
+}
+
+.nav-btn {
+	background: rgba(255, 255, 255, 0.15);
+	border: none;
+	color: white;
+	padding: 10px 22px;
+	border-radius: 30px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+	background: rgba(255, 255, 255, 0.25);
+	transform: translateY(-2px);
+}
+
+.bangla-text {
+	font-family: 'Noto Sans Bengali', sans-serif;
+}
+
+/* Main Container */
+.container {
+	max-width: 1200px;
+	margin: 30px auto;
+	padding: 0 5%;
+}
+
+/* Section Styling */
+.section {
+	background: var(--bg-white);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-lg);
+	padding: 35px;
+	margin-bottom: 30px;
+	transition: transform 0.3s ease;
+}
+
+.section:hover {
+	transform: translateY(-5px);
+}
+
+.section-title {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--primary-blue);
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+	border-bottom: 3px solid var(--light-blue);
+	text-align: center;
+}
+
+.section-title.bangla {
+	color: var(--accent-red);
+	font-family: 'Noto Sans Bengali', sans-serif;
+	margin-top: 10px;
+	font-size: 24px;
+}
+
+/* Mechanics Section */
+.mechanics-section {
+	background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+	border: 2px solid var(--light-blue);
+}
+
+.mechanics-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.mechanics-title i {
+	font-size: 32px;
+	color: var(--primary-blue);
+}
+
+.mechanics-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 25px;
+	margin-top: 20px;
+}
+
+.mechanic-card {
+	background: white;
+	border-radius: var(--border-radius);
+	padding: 25px;
+	text-align: center;
+	box-shadow: var(--shadow);
+	transition: all 0.3s ease;
+	border: 2px solid transparent;
+}
+
+.mechanic-card:hover {
+	border-color: var(--primary-blue);
+	transform: translateY(-8px);
+}
+
+.mechanic-icon {
+	width: 80px;
+	height: 80px;
+	background: var(--light-blue);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 15px;
+	font-size: 36px;
+	color: var(--primary-blue);
+}
+
+.mechanic-name {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 5px;
+	color: var(--text-dark);
+}
+
+.mechanic-specialty {
+	color: var(--text-light);
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+.mechanic-rating {
+	color: #fbbf24;
+	margin-bottom: 10px;
+}
+
+.mechanic-experience {
+	font-size: 14px;
+	color: var(--text-light);
+}
+
+/* Form Styling */
+.form-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 25px;
+	margin-bottom: 25px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: var(--text-dark);
+}
+
+.form-label.bangla {
+	font-family: 'Noto Sans Bengali', sans-serif;
+	color: var(--accent-red);
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.form-input, .form-select, .form-textarea {
+	width: 100%;
+	padding: 14px;
+	border: 2px solid #d1d5db;
+	border-radius: 8px;
+	font-size: 16px;
+	transition: border 0.3s ease;
+	font-family: 'Poppins', sans-serif;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+	outline: none;
+	border-color: var(--primary-blue);
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-textarea {
+	min-height: 100px;
+	resize: vertical;
+}
+
+.submit-btn {
+	background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+	color: white;
+	border: none;
+	padding: 16px 30px;
+	border-radius: 8px;
+	font-size: 18px;
+	font-weight: 700;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.3s ease;
+	margin-top: 10px;
+}
+
+.submit-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+}
+
+.submit-btn i {
+	margin-right: 10px;
+}
+
+/* Message Display */
+.message {
+	padding: 15px;
+	border-radius: 8px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: 600;
+	display: none;
+}
+
+.message.success {
+	background: #d1fae5;
+	color: #065f46;
+	border: 1px solid #10b981;
+}
+
+.message.error {
+	background: #fee2e2;
+	color: #991b1b;
+	border: 1px solid #ef4444;
+}
+
+/* Admin Panel */
+.admin-panel {
+	background: #fef2f2;
+	border: 2px solid #fecaca;
+}
+
+.admin-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+}
+
+.refresh-btn {
+	background: var(--accent-red);
+	color: white;
+	border: none;
+	padding: 12px 25px;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+	background: #b91c1c;
+	transform: translateY(-2px);
+}
+
+.appointment-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: var(--shadow);
+}
+
+.appointment-table th {
+	background: var(--primary-blue);
+	color: white;
+	padding: 18px 15px;
+	text-align: left;
+	font-weight: 600;
+}
+
+.appointment-table td {
+	padding: 16px 15px;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.appointment-table tr:hover {
+	background: #f0f9ff;
+}
+
+/* Utility Classes */
+.hidden {
+	display: none;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+	text-align: center;
+	padding: 25px;
+	margin-top: 40px;
+	color: var(--text-light);
+	border-top: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.nav-container {
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.mechanics-grid {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+	
+	.form-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.admin-header {
+		flex-direction: column;
+		gap: 15px;
+		text-align: center;
+	}
+	
+	.appointment-table {
+		display: block;
+		overflow-x: auto;
+	}
+}
